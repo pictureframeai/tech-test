@@ -1,0 +1,9 @@
+
+
+<!-- <img src="/media/5014-Falkirk_FK2_9XQ-Innocent-Tesco.jpg" height=400 width=400 class="img-fluid mb-2"> -->
+{% for photo in photos %}
+<h1>{{ photo.image.name }}</h1>
+<h2>{{ photo.takenBy }}</h2>
+<h2>{{ photo.dateTaken }}</h2>
+  <img src="{{ photo.image.url}}" height=800 width=800 class="img-fluid mb-2">
+{% endfor %}
