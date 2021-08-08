@@ -1,9 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+ .topcorner{
+    position:relative;
+    top:5;
+    right:-1000;
+  }
+.hide {
+  display: none;
+}
 
-
-<!-- <img src="/media/5014-Falkirk_FK2_9XQ-Innocent-Tesco.jpg" height=400 width=400 class="img-fluid mb-2"> -->
+.myDIV:hover + .hide {
+  display: block;
+}
+</style>
+</head>
+<body>
 {% for photo in photos %}
-<h1>{{ photo.image.name }}</h1>
-<h2>{{ photo.takenBy }}</h2>
-<h2>{{ photo.dateTaken }}</h2>
-  <img src="{{ photo.image.url}}" height=800 width=800 class="img-fluid mb-2">
+<div align="right">
+<svg class="topcorner" width="400" height="110" >
+  <rect  width="300" height="100" style="fill:rgb(0,0,255);stroke-width:6;stroke:rgb(0,0,255)" />
+  </svg>
+
+  </div>
 {% endfor %}
+
+{% for photo in photos %}
+
+<div class="myDIV">
+<div title="Taken By: {{ photo.takenBy }}
+Taken On: {{ photo.dateTaken }}
+Approved On: {{ photo.approvedDate }} " class="myDIV">
+<h1>{{ photo.image.name }}</h1>
+  <img src="{{ photo.image.url}}" height=800 width=800 class="img-fluid mb-2">
+
+</div>
+</div>
+<div class="hide" align="left">
+  <h2>{{ photo.takenBy }}</h2>
+  <h2>{{ photo.dateTaken }}</h2>
+  <h2>{{ photo.approvedDate }}</h2>
+</div>
+{% endfor %}
+
+</body>
+</html>
